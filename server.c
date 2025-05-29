@@ -291,29 +291,37 @@ void broadcast_command(char *username, int client_fd, char* current_room, char*m
 }
 
 void exit_command(char *username,int client_fd){
-	char msg_to_log[256];
-	
-	pthread_mutex_lock(&user_mutex);
-			    for(int i=0 ;i< user_count; i++){
-				    if(strcmp(clients[i].username,username) == 0){
-				    	free(clients[i].ip);
-           				free(clients[i].username);
-            			remove_from_room(username,clients[i].room);
-				        for(int j=i; j<user_count-1; j++){
-				        	clients[j] = clients[j+1];
-				        }
-				    break;
-				    }
-				}
-				
-			    user_count--; 
-			    pthread_mutex_unlock(&user_mutex);
-			    printf("[DISCONNECT] Client %s disconnected.\n",username);
-			    sprintf(msg_to_log,"-[DISCONNECT] Client %s disconnected.\n",username);
-			    write_to_log(msg_to_log);
-			    sprintf(msg_to_log,COLOR_RED"[SERVER]: Disconnected. Goodbye!\n"COLOR_RESET);
-			    send(client_fd,msg_to_log,strlen(msg_to_log),0);
+    char msg_to_log[256];
+    
+    pthread_mutex_lock(&user_mutex);
+    for (int i = 0; i < user_count; i++) {
+        if (strcmp(clients[i].username, username) == 0) {
+            // Odayla ilişiği kesmeden önce kullanıcı adı lazım olabilir
+            remove_from_room(username, clients[i].room);
+
+            // Artık kullanıcı silinebilir
+            free(clients[i].ip);
+            free(clients[i].username);
+            if (clients[i].room) free(clients[i].room); // Eğer strdup ile alınmışsa
+
+            // Listeyi sola kaydır
+            for (int j = i; j < user_count - 1; j++) {
+                clients[j] = clients[j + 1];
+            }
+            break;
+        }
+    }
+    user_count--; 
+    pthread_mutex_unlock(&user_mutex);
+
+    printf("[DISCONNECT] Client %s disconnected.\n", username);
+    sprintf(msg_to_log, "-[DISCONNECT] Client %s disconnected.\n", username);
+    write_to_log(msg_to_log);
+
+    sprintf(msg_to_log, COLOR_RED "[SERVER]: Disconnected. Goodbye!\n" COLOR_RESET);
+    send(client_fd, msg_to_log, strlen(msg_to_log), 0);
 }
+
 void whisper_command(char *username, char* target, char *msg, int client_fd){
 	pthread_mutex_lock(&user_mutex);
 			    int flag = 0;
@@ -448,9 +456,10 @@ void* handle_upload(void *arg) {
     int renamed = file_exists_for_user(task.filename, task.target, final_filename);
 
     if (renamed) {
-        sprintf(log_entry, "[FILE] Conflict : '%s' received twice -> renamed '%s'\n",
+        char log[128];
+        sprintf(log, "[FILE] Conflict : '%s' received twice -> renamed '%s'\n",
                 task.filename, final_filename);
-        write_to_log(log_entry);
+        write_to_log(log);
         //strcpy(task.filename, final_filename);
     }
 
