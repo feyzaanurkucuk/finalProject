@@ -1,0 +1,30 @@
+28-05-2025 11:29:42-[LOGIN] user 'feyzanur61' connected from '10.0.2.15'
+28-05-2025 11:29:50-[JOIN] user 'feyzanur61' joined room 'teamchat'
+28-05-2025 11:30:02-[BROADCAST] user 'feyzanur61': hello team!
+28-05-2025 11:30:26-[LOGIN] user 'esrahilal' connected from '10.0.2.15'
+28-05-2025 11:30:37-[WHISPER] from 'feyzanur61' to 'esrahilal': can you check this?
+28-05-2025 11:30:43upload log.txt from feyzanur61 added to queue. queue size: 1
+28-05-2025 11:30:43[UPLOAD START] log.txt from feyzanur61 to esrahilal after 0.00 seconds in queue.
+28-05-2025 11:30:43[UPLOAD COMPLETE] log.txt from feyzanur61 to esrahilal
+28-05-2025 11:30:53-[DISCONNECT] Client feyzanur61 disconnected.
+28-05-2025 11:34:33-[JOIN] user 'esrahilal' joined room 'teamA'
+28-05-2025 11:34:47-[LOGIN] user 'elifnisa17' connected from '10.0.2.15'
+28-05-2025 11:36:45-[JOIN] user 'elifnisa17' joined room 'teamA'
+28-05-2025 11:37:26-[BROADCAST] user 'elifnisa17': Hey team!! We have a new project.
+28-05-2025 11:37:49-[BROADCAST] user 'esrahilal': Well, you guys do it. I'm done.
+28-05-2025 11:37:54User esrahilal left room: teamA
+28-05-2025 11:38:03-[BROADCAST] user 'elifnisa17': ok:)
+28-05-2025 11:40:41-[DISCONNECT] Client esrahilal disconnected.
+28-05-2025 13:43:56-[LOGIN] user 'feyzanur' connected from '10.0.2.15'
+28-05-2025 13:44:01-[LOGIN] user 'esrahilal34' connected from '10.0.2.15'
+28-05-2025 13:44:05-[JOIN] user 'esrahilal34' joined room 'team'
+28-05-2025 13:44:12-[WHISPER] from 'esrahilal34' to 'feyzanur': hey
+28-05-2025 13:44:19[SHUTDOWN] SIGINT received. Disconnecting 2 clients, saving logs.
+28-05-2025 13:47:27-[LOGIN] user 'feyzanur61' connected from '10.0.2.15'
+28-05-2025 13:47:32-[LOGIN] user 'esrahilal' connected from '10.0.2.15'
+28-05-2025 13:47:56[ERROR]: Target user not found.
+28-05-2025 13:48:04upload log.txt from feyzanur61 added to queue. queue size: 1
+28-05-2025 13:48:04[FILE] Conflict : 'log.txt' received twice -> renamed 'log_1.txt'
+28-05-2025 13:48:04[UPLOAD START] log_1.txt from feyzanur61 to esrahilal after 0.00 seconds in queue.
+28-05-2025 13:48:04[UPLOAD COMPLETE] log.txt from feyzanur61 to esrahilal
+28-05-2025 13:51:50[SHUTDOWN] SIGINT received. Disconnecting 0 clients, saving logs.
